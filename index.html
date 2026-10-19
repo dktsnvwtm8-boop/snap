@@ -212,13 +212,10 @@ snaptr('track', 'PAGE_VIEW');
       </div>
     </section>
 
-    <a
-      class="button"
-      href="https://giftclick.org/aff_c?offer_id=323&amp;aff_id=206746"
-      rel="sponsored"
-    >
-      View Offer &amp; Get Started &rarr;
-    </a>
+    <a id="offer-button"
+   href="https://giftclick.org/aff_c?offer_id=323&aff_id=206746">
+  View Offer &amp; Get Started →
+</a>
 
     <p class="disclaimer">
       This is a promotional offer. Reward eligibility and fulfillment
@@ -227,5 +224,21 @@ snaptr('track', 'PAGE_VIEW');
     </p>
 
   </main>
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+  const offerButton = document.querySelector('#offer-button');
+
+  if (offerButton) {
+    offerButton.addEventListener('click', function () {
+      if (typeof snaptr === 'function') {
+        snaptr('track', 'CUSTOM_EVENT_1');
+        console.log('Snap custom event triggered: CUSTOM_EVENT_1');
+      } else {
+        console.error('Snap Pixel is not available.');
+      }
+    });
+  }
+});
+</script>
 </body>
 </html>
